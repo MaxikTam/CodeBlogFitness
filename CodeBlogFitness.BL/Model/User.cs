@@ -1,12 +1,13 @@
 ﻿using System;
-    
+using System.Runtime.CompilerServices;
+
 namespace CodeBlogFitness.BL.Model
 {
     /// <summary>
     /// Пользователь
     /// </summary>
     [Serializable]
-    internal class User
+    public class User
     {
         /// <summary>
         /// Имя.
@@ -15,11 +16,11 @@ namespace CodeBlogFitness.BL.Model
         /// <summary>
         /// Пол
         /// </summary>
-        public Gender Gender { get; }
+        public Gender Gender { get; set; }
         /// <summary>
         /// Дата рождения.
         /// </summary>
-        public DateTime BirthDate { get; }
+        public DateTime BirthDate { get; set; }
         /// <summary>
         /// Вес
         /// </summary>
@@ -28,6 +29,10 @@ namespace CodeBlogFitness.BL.Model
         /// Рост
         /// </summary>
         public double Height { get; set; }
+        /// <summary>
+        /// Вычисляемое свойство получения возраста в годах.
+        /// </summary>
+        public int Age { get { return DateTime.Now.Year - BirthDate.Year;} }
         
         /// <summary>
         /// Создать нового пользователя
@@ -75,9 +80,19 @@ namespace CodeBlogFitness.BL.Model
             Height = height;
         }
 
+        public User(string name)
+        {
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                throw new ArgumentNullException("Имя пользователя не может быть пучтым или null", nameof(name));
+            }
+
+            Name = name;
+        }
+
         public override string ToString()
         {
-            return Name;
+            return Name + " " + Age;
         }
     }
 }
