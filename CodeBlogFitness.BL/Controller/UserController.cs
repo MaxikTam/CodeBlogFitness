@@ -44,7 +44,7 @@ namespace CodeBlogFitness.BL.Controller
             var formatter = new BinaryFormatter();
             using (var fs = new FileStream("users.dat", FileMode.OpenOrCreate))
             {
-                return formatter.Deserialize(fs) as User  
+                return formatter.Deserialize(fs) as User; // add this comment  
             }
         }
     }
