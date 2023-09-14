@@ -9,6 +9,7 @@ namespace CodeBlogFitness.BL.Controller
 {
     internal class UserController
     {
-        public User User { get; }
+        public User User { get; } //jy tuj nj;t lj,fdbk
+
     }
 }
