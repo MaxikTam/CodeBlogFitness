@@ -5,6 +5,7 @@ namespace CodeBlogFitness.BL.Model
     /// <summary>
     /// Пользователь
     /// </summary>
+    [Serializable]
     internal class User
     {
         /// <summary>
