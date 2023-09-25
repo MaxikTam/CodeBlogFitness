@@ -1,4 +1,5 @@
 ﻿using CodeBlogFitness.BL.Controller;
+using CodeBlogFitness.BL.Model;
 using System;
 
 namespace CodeBlogFitness.CMD
@@ -25,8 +26,27 @@ namespace CodeBlogFitness.CMD
                 userController.SetNewUserData(gender, birthDate, weight, height);
             }
             Console.WriteLine(userController.CurrentUser);
+
+            Console.WriteLine("Что вы хотите сделать?");
+            Console.WriteLine("E - ввести приём пищи");
+
+            var key = Console.Readkey();
+            if(key.Key == ConsoleKey.E)
+
             Console.ReadKey();
         }
+
+        private static Food EnterEating()
+        {
+            Console.WriteLine("Введите имя продукта: ");
+            var food = Console.ReadLine();
+
+            Console.WriteLine("Введите вес порции: ");
+            var weight = ParseDouble("Вес порции");
+
+            return new Food()
+        }
+
 
         private static DateTime ParseDateTime()
         {
@@ -58,7 +78,7 @@ namespace CodeBlogFitness.CMD
                 }
                 else
                 {
-                    Console.WriteLine($"Неверный формат {name}");
+                    Console.WriteLine($"Неверный формат поля {name}");
                 }
             }
         }
